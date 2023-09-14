@@ -2,11 +2,12 @@
   "name": "spambot",
   "version": "1.0.0",
   "description": "spambot",
-  "main": "src/main.ts",
+  "main": "./src/main.ts",
   "scripts": {
-    "dev": "ts-node",
-    "build": "tsc",
-    "start": "NODE_ENV=production node dist/main.js"
+    "dev": "ts-node ./src/main.ts",
+    "prebuild": "rimraf ./dist",
+    "build": "pnpm run prebuild && tsc",
+    "start": "pnpm run build && NODE_ENV=production node ./dist/main.js"
   },
   "keywords": [],
   "author": "Arda Sevinc <ardasevinc.technical@gmail.com>",
@@ -25,6 +26,10 @@
     "typescript": "^5.2.2"
   },
   "engines": {
-    "node": ">=18.16.0"
+    "node": ">=18.16.0",
+    "pnpm": ">=8"
+  },
+  "dependencies": {
+    "rimraf": "^5.0.1"
   }
 }
