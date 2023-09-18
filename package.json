@@ -4,7 +4,7 @@
   "description": "spambot",
   "main": "./src/main.ts",
   "scripts": {
-    "dev": "ts-node -r dotenv/config ./src/main.ts",
+    "dev": "NODE_ENV=development ts-node -r dotenv/config ./src/main.ts",
     "prebuild": "rimraf ./dist",
     "build": "pnpm run prebuild && tsc",
     "start": "pnpm run build && NODE_ENV=production node ./dist/main.js"
