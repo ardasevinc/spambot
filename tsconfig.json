@@ -3,7 +3,7 @@
   "display": "Default",
   "compilerOptions": {
     "target": "es2020",
-    "module": "es2020",
+    "module": "CommonJS",
     "allowJs": true,
     "removeComments": true,
     "resolveJsonModule": true,
@@ -13,7 +13,6 @@
     "sourceMap": true,
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2020"],
-    "moduleResolution": "Node",
     "strict": true,
     "baseUrl": "./src",
     "paths": {
