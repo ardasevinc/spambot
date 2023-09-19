@@ -4,10 +4,10 @@
   "description": "spambot",
   "main": "./src/main.ts",
   "scripts": {
-    "dev": "NODE_ENV=development ts-node -r dotenv/config ./src/main.ts",
+    "dev": "nodemon",
     "prebuild": "rimraf ./dist",
     "build": "pnpm run prebuild && tsc",
-    "start": "pnpm run build && NODE_ENV=production node ./dist/main.js"
+    "start": "pnpm run build && node ./dist/main.js"
   },
   "keywords": [],
   "author": "Arda Sevinc <ardasevinc.technical@gmail.com>",
@@ -17,10 +17,10 @@
     "@types/node": "^20.6.0",
     "@typescript-eslint/eslint-plugin": "^6.7.0",
     "@typescript-eslint/parser": "^6.7.0",
-    "chokidar": "^3.5.3",
     "dotenv": "^16.3.1",
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
+    "nodemon": "^3.0.1",
     "prettier": "^3.0.3",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
