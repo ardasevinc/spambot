@@ -9,3 +9,28 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Guild {
+  id        String   @id
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  timers    Timer[]
+}
+
+model Timer {
+  id        Int
+  name      String?
+  delay     Int
+  guild     Guild    @relation(fields: [guildId], references: [id])
+  guildId   String
+  channelId String   @id
+  status    TimerStatus
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum TimerStatus {
+  RUNNING
+  STOPPED
+}
