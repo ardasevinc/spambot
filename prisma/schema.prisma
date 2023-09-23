@@ -13,9 +13,18 @@ datasource db {
 model Guild {
   id        String   @id
   name      String
+  timers    Timer[]
+  settings  Config?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  timers    Timer[]
+}
+
+model Config {
+  guild      Guild    @relation(fields: [guildId], references: [id])
+  guildId    String   @unique
+  logChannel String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
 
 model Timer {
