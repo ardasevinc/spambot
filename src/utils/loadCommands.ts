@@ -25,12 +25,12 @@ const loadCommands = async (Bot: Bot): Promise<boolean> => {
       result.set(name, mod[name]);
     }
     Bot.commands = result;
-    console.log(result);
     return result.size > 0;
   } catch (err) {
     console.error('Slash commands could not be loaded: ', err);
     return false;
   }
+  2;
 };
 
 export { loadCommands };
