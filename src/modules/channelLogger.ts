@@ -1,5 +1,5 @@
 import { Bot } from '@/types/Bot';
-import { type BaseGuildTextChannel } from 'discord.js';
+import { type BaseGuildTextChannel, EmbedBuilder } from 'discord.js';
 
 export const channelLogger = async (
   Bot: Bot,
@@ -31,7 +31,12 @@ export const channelLogger = async (
   }
 
   try {
-    await logChannel.send(message);
+    const embed = new EmbedBuilder()
+      .setColor('#7FFF00')
+      .setTitle('Bot Log')
+      .setDescription(message)
+      .setTimestamp();
+    await logChannel.send({ embeds: [embed] });
     return true;
   } catch (err) {
     console.error(`Channel logger error: ${err}`);
