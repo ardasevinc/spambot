@@ -24,6 +24,13 @@ export const initEnv = (Bot: Bot) => {
     Bot.env.HOME_GUILD_ID = process.env.HOME_GUILD_ID;
   }
 
+  if (!process.env.HOME_GUILD_CHANNEL_ID) {
+    console.error('HOME_GUILD_CHANNEL_ID env variable is not set');
+    return false;
+  } else {
+    Bot.env.HOME_GUILD_CHANNEL_ID = process.env.HOME_GUILD_CHANNEL_ID;
+  }
+
   if (!process.env.NODE_ENV) {
     console.error('NODE_ENV env variable is not set');
     return false;

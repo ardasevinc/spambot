@@ -2,7 +2,7 @@ import { Bot } from '@/types/Bot';
 import { type BaseGuildTextChannel } from 'discord.js';
 
 export const homeGuildLogger = async (Bot: Bot, message: string) => {
-  const logChannelId = Bot.env.HOME_GUILD_ID;
+  const logChannelId = Bot.env.HOME_GUILD_CHANNEL_ID;
 
   if (!logChannelId) {
     console.log('Home Guild log channel not set');
