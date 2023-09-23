@@ -6,6 +6,7 @@ import { initDb } from './utils/db/initDb';
 import { Bot } from './types/Bot';
 import { initEnv } from '@/utils/initEnv';
 import { attachListeners } from './utils/attachListeners';
+import { initOpenAi } from './utils/ai/initOpenAi';
 
 void (async () => {
   console.log('Starting spambot...');
@@ -57,6 +58,15 @@ void (async () => {
     console.log('Events loaded');
   } else {
     console.error('Events could not be loaded!');
+    process.exit(1);
+  }
+
+  Bot.env?.OPENAI_API_KEY && console.log('Initializing OpenAI...');
+  const openAiInitialized = initOpenAi(Bot);
+  if (openAiInitialized) {
+    console.log('OpenAI init success');
+  } else {
+    console.error('OpenAI init failed!');
     process.exit(1);
   }
 

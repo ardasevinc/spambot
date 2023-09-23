@@ -50,5 +50,11 @@ export const initEnv = (Bot: Bot) => {
     Bot.env.DATABASE_URL = process.env.DATABASE_URL;
   }
 
+  if (!process.env.OPENAI_API_KEY) {
+    console.log('OPENAI_API_KEY env variable is not set. Defaulting.');
+  } else {
+    Bot.env.OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+  }
+
   return true;
 };
