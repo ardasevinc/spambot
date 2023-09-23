@@ -1,3 +1,5 @@
+import { Bot } from '@/types/Bot';
+import { Command } from '@/types/Command';
 import {
   Message,
   REST,
@@ -7,7 +9,7 @@ import {
 } from 'discord.js';
 
 const registerSlashCommands = async (
-  Bot,
+  Bot: Bot,
   message?: Message,
 ): Promise<boolean> => {
   try {
@@ -20,15 +22,17 @@ const registerSlashCommands = async (
       | RESTPostAPIChatInputApplicationCommandsJSONBody
     )[] = [];
 
-    Bot.commands.forEach((value, _key, _map) => {
-      // console.log(`data=${value.toString()}, key=${key}, map=${map}`);
-      const data =
-        value.data.toJSON() as RESTPostAPIApplicationCommandsJSONBody;
-      data.options?.sort((a, b) => a.name.localeCompare(b.name));
+    Bot.commands.forEach(
+      (value: Command, _key: string, _map: Map<string, Command>) => {
+        // console.log(`data=${value.toString()}, key=${key}, map=${map}`);
+        const data =
+          value.data.toJSON() as RESTPostAPIApplicationCommandsJSONBody;
+        data.options?.sort((a, b) => a.name.localeCompare(b.name));
 
-      commandData.push(data);
-    });
-    Bot.contexts?.forEach((context) => commandData.push(context.data));
+        commandData.push(data);
+      },
+    );
+    // Bot.contexts?.forEach((context) => commandData.push(context.data));
     if (process.env.NODE_ENV === 'production') {
       console.log('Registering commands globally...');
       await rest.put(
