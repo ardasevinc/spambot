@@ -32,7 +32,6 @@
     "pnpm": ">=8"
   },
   "dependencies": {
-    "@faker-js/faker": "^8.1.0",
     "@prisma/client": "5.3.1",
     "axios": "^1.5.0",
     "bufferutil": "^4.0.7",
