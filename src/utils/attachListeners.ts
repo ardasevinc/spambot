@@ -7,7 +7,7 @@ export const attachListeners = (Bot: Bot) => {
     await interactionCreate(Bot, interaction);
   });
 
-  Bot.on(Events.ClientReady, async () => {
+  Bot.once(Events.ClientReady, async () => {
     await clientReady(Bot);
   });
 };
