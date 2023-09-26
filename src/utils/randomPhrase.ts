@@ -2,7 +2,7 @@ import { Bot } from '@/types/Bot';
 
 export const randomPhrase = async (Bot: Bot, guildId: string) => {
   const systemMessage =
-    'Immediately return a 50 words nonsensical sentence only. Maximum reddit cringe.';
+    'Immediately return a 30 words nonsensical sentence only. Maximum reddit cringe.';
 
   const model = 'gpt-3.5-turbo';
 
