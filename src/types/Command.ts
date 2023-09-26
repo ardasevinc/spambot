@@ -7,13 +7,11 @@ import type {
 import type { Bot } from './Bot';
 
 export interface Command {
-  data:
-    | Omit<SlashCommandBuilder, 'addSubCommand' | 'addSubCommandGroup'>
-    | SlashCommandSubcommandsOnlyBuilder;
+  data: SlashCommandBuilder;
 
   execute: (
     Bot: Bot,
-    interaction: ChatInputCommandInteraction,
+    interaction: ChatInputCommandInteraction
   ) => Promise<void>;
 }
 
