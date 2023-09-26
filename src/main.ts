@@ -7,6 +7,7 @@ import { Bot } from './types/Bot';
 import { initEnv } from '@/utils/initEnv';
 import { attachListeners } from './utils/attachListeners';
 import { initOpenAi } from './utils/ai/initOpenAi';
+import { initTimers } from './utils/initTimers';
 
 void (async () => {
   console.log('Starting spambot...');
@@ -67,6 +68,15 @@ void (async () => {
     console.log('OpenAI init success');
   } else {
     console.error('OpenAI init failed!');
+    process.exit(1);
+  }
+
+  console.log('Init timers...');
+  const timersInit = await initTimers(Bot);
+  if (timersInit) {
+    console.log('Timers init success');
+  } else {
+    console.error('Timers init failed!');
     process.exit(1);
   }
 
