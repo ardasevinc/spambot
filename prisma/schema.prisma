@@ -29,12 +29,12 @@ model Config {
 }
 
 model Timer {
-  id        Int
+  id        Int      @default(autoincrement()) @id
   name      String?
   delay     Int
   guild     Guild    @relation(fields: [guildId], references: [id])
   guildId   String
-  channelId String   @id
+  channelId String   @unique
   status    TimerStatus
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
